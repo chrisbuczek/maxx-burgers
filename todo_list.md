@@ -2,8 +2,8 @@
 
 ## PROJECT OVERVIEW
 
-- Frontend: React + Redux Toolkit + Tailwind CSS + React Router v7
-- Backend: Node.js + Express + MongoDB
+- Frontend: React + Redux Toolkit + Tailwind CSS + React Router v7 + Typescript
+- Backend: Node.js + Express + MongoDB + Swagger + Typescript
 - Auth: JWT (JSON Web Tokens)
 - Payments: Stripe
 - Monitoring: Sentry
@@ -25,7 +25,7 @@
 ### 1.1 Project Setup
 
 - [✅] Initialize Node.js project with Express
-- [ ] Set up TypeScript configuration
+- [ ] Set up TypeScript + Swagger configuration
 - [ ] Configure ESLint + Prettier
 - [ ] Set up environment variables (.env)
 - [ ] Create basic folder structure:
