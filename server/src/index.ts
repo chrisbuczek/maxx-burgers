@@ -1,13 +1,10 @@
-const express = require("express");
+import app from "./app.js";
 
-const app = express();
-const PORT = process.env.PORT || 9000;
-
-app.use(express.json());
+const PORT = process.env.PORT || 8080;
 
 app.get("/", (req, res) => {
   res.json({
-    message: "Welcome to Max Burgers API!",
+    message: "Welcome to Max Burgers API! /api-docs for swagger docs",
     status: "Server is running successfully",
     timestamp: new Date().toISOString(),
   });

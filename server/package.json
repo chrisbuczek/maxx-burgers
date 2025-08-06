@@ -2,18 +2,29 @@
   "name": "max-burgers-api",
   "version": "1.0.0",
   "description": "Max burgers api ",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/index.js",
-    "start": "node src/index.js"
+    "dev": "nodemon src/index.ts",
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "swagger": "tsx  src/swagger.ts"
   },
   "author": "Chris Buczek",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.0.0",
+    "@types/swagger-ui-express": "^4.1.8",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2"
   }
 }

@@ -24,8 +24,8 @@
 
 ### 1.1 Project Setup
 
-- [✅] Initialize Node.js project with Express
-- [ ] Set up TypeScript + Swagger configuration
+- [x] Initialize Node.js project with Express
+- [x] Set up TypeScript + Swagger configuration - useful link: https://dev.to/yugjadvani/automating-nodejs-documentation-with-swagger-3o0d
 - [ ] Configure ESLint + Prettier
 - [ ] Set up environment variables (.env)
 - [ ] Create basic folder structure:
