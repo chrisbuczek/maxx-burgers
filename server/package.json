@@ -1,7 +1,7 @@
 {
-  "name": "max-burgers-api",
+  "name": "maxx-burgers-api",
   "version": "1.0.0",
-  "description": "Max burgers api ",
+  "description": "Maxx burgers api ",
   "type": "module",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "dev": "nodemon src/index.ts",
     "start": "node dist/index.js",
     "build": "tsc",
-    "swagger": "tsx  src/swagger.ts"
+    "swagger": "tsx src/swagger.ts"
   },
   "author": "Chris Buczek",
   "license": "ISC",
