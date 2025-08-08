@@ -2,7 +2,7 @@
 
 ## PROJECT OVERVIEW
 
-- Frontend: React + Redux Toolkit + Tailwind CSS + React Router v7 + Typescript
+- Frontend: React + Redux Toolkit + Tailwind CSS + React Router v7 + Shadcn + Typescript
 - Backend: Node.js + Express + MongoDB + Swagger + Typescript
 - Auth: JWT (JSON Web Tokens)
 - Payments: Stripe
@@ -26,7 +26,7 @@
 
 - [x] Initialize Node.js project with Express
 - [x] Set up TypeScript + Swagger configuration - useful link: https://dev.to/yugjadvani/automating-nodejs-documentation-with-swagger-3o0d
-- [ ] Configure ESLint + Prettier
+- [ ] Configure ESLint + Prettier - npm install -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin. npm install -D eslint-config-prettier eslint-plugin-prettier
 - [ ] Set up environment variables (.env)
 - [ ] Create basic folder structure:
   ```
