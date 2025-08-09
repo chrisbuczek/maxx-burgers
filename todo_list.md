@@ -7,7 +7,8 @@
 - Auth: JWT (JSON Web Tokens)
 - Payments: Stripe
 - Monitoring: Sentry
-- Analytics: Google Analytics 4 (easiest solution)
+- Analytics: Google Analytics 4
+- Testing: Jest (API testing), Playwright (E2E testing)
 
 ## DEVELOPMENT APPROACH: BACKEND FIRST ✅
 
@@ -26,7 +27,7 @@
 
 - [x] Initialize Node.js project with Express
 - [x] Set up TypeScript + Swagger configuration - useful link: https://dev.to/yugjadvani/automating-nodejs-documentation-with-swagger-3o0d
-- [ ] Configure ESLint + Prettier - npm install -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin. npm install -D eslint-config-prettier eslint-plugin-prettier
+- [ ] Configure ESLint + Prettier + Jest -
 - [ ] Set up environment variables (.env)
 - [ ] Create basic folder structure:
   ```
@@ -194,7 +195,7 @@
 
 - [ ] Backend: Jest + Supertest for API testing
 - [ ] Frontend: Vitest + React Testing Library
-- [ ] E2E testing with Playwright (optional but recommended)
+- [ ] E2E testing with Playwright
 - [ ] Test payment flow in Stripe test mode
 
 ---
@@ -321,6 +322,7 @@ Alerting notifies you when something goes wrong:
 - [ ] Site is monitored and secure
 - [ ] Mobile responsive design
 - [ ] Page load times < 3 seconds
+- [ ] Use Google Lighthouse extension to check performance and SEO
 
 ---
 
