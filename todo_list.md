@@ -27,7 +27,7 @@
 
 - [x] Initialize Node.js project with Express
 - [x] Set up TypeScript + Swagger configuration - useful link: https://dev.to/yugjadvani/automating-nodejs-documentation-with-swagger-3o0d
-- [ ] Configure ESLint + Prettier + Jest -
+- [ ] Configure ESLint + Prettier + Jest
 - [ ] Set up environment variables (.env)
 - [ ] Create basic folder structure:
   ```
@@ -109,9 +109,9 @@
 
 ### 3.1 React App Setup
 
-- [ ] Initialize React app with Vite (already done!)
+- [ ] Initialize React app with Vite
 - [ ] Install and configure Tailwind CSS
-- [ ] Set up React Router v7 (already configured!)
+- [ ] Set up React Router v7
 - [ ] Install Redux Toolkit & React-Redux
 - [ ] Configure Redux store structure
 

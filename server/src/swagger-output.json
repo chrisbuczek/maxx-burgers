@@ -12,7 +12,17 @@
     "https"
   ],
   "paths": {
-    "/users/users": {
+    "/users/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/users/me": {
       "get": {
         "description": "",
         "responses": {
