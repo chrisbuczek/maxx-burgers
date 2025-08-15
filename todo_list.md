@@ -26,14 +26,13 @@
 ### 1.1 Project Setup
 
 - [x] Initialize Node.js project with Express
-- [x] Set up TypeScript + Swagger configuration - useful link: https://dev.to/yugjadvani/automating-nodejs-documentation-with-swagger-3o0d
-- [ ] Configure ESLint + Prettier + Jest
-- [ ] Set up environment variables (.env)
-- [ ] Create basic folder structure:
+- [x] Set up TypeScript + Swagger configuration - useful link: https://dev.to/yugjadvani/automating-nodejs-documentation-with-swagger-3o0d npm run swagger every time a api changes to create swagger-output.json
+- [x] Configure ESLint + Prettier
+- [x] Set up environment variables (.env)
+- [x] Create basic folder structure:
   ```
   server/
   ├── src/
-  │   ├── controllers/
   │   ├── models/
   │   ├── routes/
   │   ├── middleware/
@@ -46,8 +45,8 @@
 
 ### 1.2 Database Setup
 
-- [ ] Install MongoDB (local) or set up MongoDB Atlas
-- [ ] Install mongoose for ODM
+- [x] Set up MongoDB Atlas with Typescript - https://www.mongodb.com/resources/products/compatibilities/using-typescript-with-mongodb-tutorial install mongodb, dotenv
+- [x] Install Mongoose ODM (Object Data Modeling) https://mongoosejs.com/docs/
 - [ ] Create database connection module
 - [ ] Design data schemas:
   - User (email, password hash, profile info)
