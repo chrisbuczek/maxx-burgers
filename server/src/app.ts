@@ -8,11 +8,13 @@ import swaggerDocument from "./swagger-output.json" with { type: "json" };
 const app = express();
 dotenv.config();
 
-if (!process.env.DB_CONN_STRING) {
+if (!process.env.DB_CONN_STRING || !process.env.DB_NAME) {
   throw new Error("DB_CONNECT_URL environment variable is not defined");
 } else {
   mongoose
-    .connect(process.env.DB_CONN_STRING)
+    .connect(process.env.DB_CONN_STRING, {
+      dbName: process.env.DB_NAME || "app",
+    })
     .then(() => console.log("connected to db"))
     .catch((err: Error) => console.log("ERROR", err));
 }
