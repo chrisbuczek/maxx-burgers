@@ -133,7 +133,20 @@
 - [ ] Toast notifications
 - [ ] Modal components
 
-### 3.4 Authentication Pages
+### 3.4 Storybook Setup (Component Library)
+
+- [ ] Install & initialize Storybook (Vite + React + TS): npx storybook@latest init
+- [ ] Configure Tailwind + globals in .storybook/preview
+- [ ] Add controls, docs, a11y, interactions, viewport addons
+- [ ] Create stories for: Button, Header, Card, Form fields, Loading, EmptyState
+- [ ] Add dark/light theme toggle in decorators
+- [ ] Enable absolute import paths in tsconfig + Storybook config
+- [ ] Add Storybook build script ("storybook" / "build-storybook")
+- [ ] Integrate MSW (mock service worker) for API-mocking in stories (optional)
+- [ ] Visual regression (Chromatic or Storycap + Playwright) (optional)
+- [ ] Add CI step to build Storybook (optional)
+
+### 3.5 Authentication Pages
 
 - [ ] Login page (using existing auth/login.tsx)
 - [ ] Register page (using existing auth/register.tsx)
