@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 interface ICategory extends mongoose.Document {
   name: string;
   slug: string;
-  image?: string;
+  image: string;
   isActive: boolean;
 }
 
@@ -11,7 +11,7 @@ const categorySchema = new mongoose.Schema<ICategory>(
   {
     name: { type: String, required: true },
     slug: { type: String, required: true, unique: true },
-    image: { type: String, required: false },
+    image: { type: String, required: true },
     isActive: { type: Boolean, required: false, default: true },
   },
   { timestamps: true },

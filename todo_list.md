@@ -47,7 +47,7 @@
 
 - [x] Set up MongoDB Atlas with Typescript - https://www.mongodb.com/resources/products/compatibilities/using-typescript-with-mongodb-tutorial install mongodb, dotenv
 - [x] Install Mongoose ODM (Object Data Modeling) https://mongoosejs.com/docs/
-- [ ] Create database connection module
+- [x] Create database connection module
 - [ ] Design data schemas:
   - User (email, password hash, profile info)
   - Product (burger details, price, ingredients, images)
@@ -81,6 +81,11 @@
 - [ ] Add input validation with joi or express-validator
 - [ ] Add request logging middleware
 - [ ] Error handling middleware
+
+### 1.6 Sample data
+
+- [ ] Create sample data for all models
+- [ ] Move images to cloudinary
 
 ---
 
