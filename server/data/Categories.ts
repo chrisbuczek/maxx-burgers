@@ -1,6 +1,5 @@
-import mongoose from "mongoose";
 import type { ICategory } from "../src/types/Category.js";
-type CategoryData = (ICategory extends mongoose.Document)[]
+type CategoryData = Pick<ICategory, "name" | "slug" | "image" | "isActive">[];
 
 const categories: CategoryData = [
   {

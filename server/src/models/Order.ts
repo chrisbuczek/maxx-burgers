@@ -1,25 +1,10 @@
 import mongoose from "mongoose";
-
-interface IOrderItem extends mongoose.Document {
-  quantity: number;
-  product: mongoose.Types.ObjectId;
-}
+import type { IOrderItem, IOrder } from "../types/Order.js";
 
 const orderItemSchema = new mongoose.Schema<IOrderItem>({
   quantity: { type: Number, required: true },
   product: { type: mongoose.Schema.Types.ObjectId, required: true },
 });
-
-interface IOrder extends mongoose.Document {
-  user: mongoose.Types.ObjectId;
-  orderItems: IOrderItem[];
-  shippingAddress: {
-    address: string;
-    city: string;
-    postalCode: string;
-    country: string;
-  };
-}
 
 const orderSchema = new mongoose.Schema<IOrder>(
   {

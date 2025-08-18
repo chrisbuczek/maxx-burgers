@@ -1,13 +1,6 @@
 import mongoose from "mongoose";
+import type { IUser } from "../types/User.js";
 import { Roles } from "../types/Roles.js";
-import type { RolesEnum } from "../types/Roles.js";
-
-interface IUser extends mongoose.Document {
-  name: string;
-  email: string;
-  passwordHash: string;
-  roles: RolesEnum[];
-}
 
 const userSchema = new mongoose.Schema<IUser>(
   {

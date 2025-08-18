@@ -1,12 +1,5 @@
 import mongoose from "mongoose";
-
-interface IProduct extends mongoose.Document {
-  name: string;
-  categories: mongoose.Types.ObjectId[];
-  price: number;
-  image: string;
-  isActive: boolean;
-}
+import type { IProduct } from "../types/Products.js";
 
 const productSchema = new mongoose.Schema<IProduct>(
   {
