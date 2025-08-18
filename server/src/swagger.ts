@@ -3,9 +3,8 @@ import swaggerAutogen from "swagger-autogen";
 const doc = {
   info: {
     version: "v1.0.0",
-    title: "LexBridge API",
-    description:
-      "LexBridge is a seamless platform that connects clients with verified legal experts, offering secure communication, easy appointment booking, transparent pricing, and comprehensive legal services all in one place.",
+    title: "Maxx Burgers API",
+    description: "Maxx Burgers API for managing burgers, categories, orders, and user authentication.",
   },
   host: `localhost:${process.env.PORT || 8080}`,
   basePath: "/",
@@ -13,6 +12,6 @@ const doc = {
 };
 
 const outputFile = "./swagger-output.json";
-const endpointsFiles = ["./routes/index.ts"];
+const endpointsFiles = ["./app.ts"];
 
 swaggerAutogen()(outputFile, endpointsFiles, doc);

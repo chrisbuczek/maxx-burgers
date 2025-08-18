@@ -5,7 +5,7 @@ router.get("/", (req, res) => {
   res.json({ message: "List of users" });
 });
 
-router.get("/me", (req, res) => {
+router.get("/create", (req, res) => {
   res.json({ message: "List of users" });
 });
 

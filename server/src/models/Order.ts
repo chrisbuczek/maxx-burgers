@@ -2,11 +2,12 @@ import mongoose from "mongoose";
 
 interface IOrderItem extends mongoose.Document {
   quantity: number;
-  product: string;
+  product: mongoose.Types.ObjectId;
 }
 
 const orderItemSchema = new mongoose.Schema<IOrderItem>({
   quantity: { type: Number, required: true },
+  product: { type: mongoose.Schema.Types.ObjectId, required: true },
 });
 
 interface IOrder extends mongoose.Document {

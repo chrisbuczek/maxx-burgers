@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 // import cors from "cors";
 import mongoose from "mongoose";
 import routes from "./routes/index.js";
+import databaseSeederRoutes from "./databaseSeeder.js";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "./swagger-output.json" with { type: "json" };
 const app = express();
@@ -21,37 +22,15 @@ if (!process.env.DB_CONN_STRING || !process.env.DB_NAME) {
 
 // app.use(cors({ origin: process.env.CORS_ORIGIN, credentials: true }));
 app.use(express.json());
+
+// Mount API routes under /api/v1 prefix
+app.use("/api/v1", routes);
+app.use("/api/v1/seed", databaseSeederRoutes);
 // app.use(express.json({ limit: '16kb' }));
 // app.use(express.urlencoded({ extended: true, limit: '16kb' }));
 // app.use(express.static('public'));
 
-// Mount API routes under /api/v1 prefix
-// app.use("/api/v1", routes);
-
 // Serve Swagger documentation
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-interface IKitten extends mongoose.Document {
-  name?: string | null;
-  speak(): void;
-}
-
-const kittySchema = new mongoose.Schema<IKitten>({
-  name: String,
-});
-
-kittySchema.methods.speak = function speak() {
-  const greeting = this.name ? "Meow name is " + this.name : "I don't have a name";
-  console.log(greeting);
-};
-
-const Kitten = mongoose.model<IKitten>("Kitten", kittySchema);
-const fluffy = new Kitten({ name: "fluffy" });
-// fluffy.speak(); // "Meow name is fluffy"
-await fluffy.save();
-const kittens = await Kitten.find();
-console.log(kittens);
-const myKitten = await Kitten.find({ _id: "689f9a3fd21395dc47025459" });
-console.log("myKitten", myKitten);
 
 export default app;

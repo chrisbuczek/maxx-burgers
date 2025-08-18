@@ -2,8 +2,7 @@ import mongoose from "mongoose";
 
 interface IProduct extends mongoose.Document {
   name: string;
-  category: mongoose.Types.ObjectId;
-  description: string;
+  categories: mongoose.Types.ObjectId[];
   price: number;
   image: string;
   isActive: boolean;
@@ -12,7 +11,7 @@ interface IProduct extends mongoose.Document {
 const productSchema = new mongoose.Schema<IProduct>(
   {
     name: { type: String, required: true },
-    description: { type: String, required: true },
+    categories: { type: [mongoose.Schema.Types.ObjectId], required: true, ref: "Category" },
     price: { type: Number, required: true },
     image: { type: String, required: false },
     isActive: { type: Boolean, required: false, default: true },

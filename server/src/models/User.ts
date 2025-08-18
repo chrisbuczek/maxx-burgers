@@ -7,7 +7,6 @@ interface IUser extends mongoose.Document {
   email: string;
   passwordHash: string;
   roles: RolesEnum[];
-  // speak(): void;
 }
 
 const userSchema = new mongoose.Schema<IUser>(
@@ -23,10 +22,5 @@ const userSchema = new mongoose.Schema<IUser>(
   },
   { timestamps: true },
 );
-
-// userSchema.methods.speak = function speak() {
-//   const greeting = "User name is " + this.name;
-//   console.log(greeting);
-// };
 
 export default mongoose.model<IUser>("User", userSchema);

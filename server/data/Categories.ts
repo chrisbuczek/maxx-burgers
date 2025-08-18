@@ -1,4 +1,8 @@
-const categories = [
+import mongoose from "mongoose";
+import type { ICategory } from "../src/types/Category.js";
+type CategoryData = (ICategory extends mongoose.Document)[]
+
+const categories: CategoryData = [
   {
     name: "limited deluxe",
     slug: "limited-deluxe",

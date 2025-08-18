@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "version": "v1.0.0",
-    "title": "LexBridge API",
-    "description": "LexBridge is a seamless platform that connects clients with verified legal experts, offering secure communication, easy appointment booking, transparent pricing, and comprehensive legal services all in one place."
+    "title": "Maxx Burgers API",
+    "description": "Maxx Burgers API for managing burgers, categories, orders, and user authentication."
   },
   "host": "localhost:8080",
   "basePath": "/",
@@ -12,7 +12,7 @@
     "https"
   ],
   "paths": {
-    "/users/": {
+    "/api/v1/users/": {
       "get": {
         "description": "",
         "responses": {
@@ -22,12 +22,22 @@
         }
       }
     },
-    "/users/me": {
+    "/api/v1/users/create": {
       "get": {
         "description": "",
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/seed/categories": {
+      "post": {
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
           }
         }
       }
