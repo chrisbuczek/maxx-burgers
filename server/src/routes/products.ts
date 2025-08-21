@@ -7,6 +7,11 @@ router.get("/", async (req, res) => {
   res.json({ products });
 });
 
+router.get("/:id", async (req, res) => {
+  // const products = Product.find({req.params.id});
+  // res.json({ products });
+});
+
 router.post("/create", (req, res) => {
   res.json({ message: "List of users" });
 });

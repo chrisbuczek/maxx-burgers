@@ -12,7 +12,7 @@
     "https"
   ],
   "paths": {
-    "/api/v1/users/": {
+    "/api/v1/users/login": {
       "get": {
         "description": "",
         "responses": {
@@ -33,6 +33,26 @@
       }
     },
     "/api/v1/seed/categories": {
+      "post": {
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/v1/seed/products": {
+      "post": {
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/v1/seed/users": {
       "post": {
         "description": "",
         "responses": {
