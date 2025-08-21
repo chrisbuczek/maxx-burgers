@@ -10,6 +10,8 @@ import productsMockData from "../data/Products.js";
 import User from "./models/User.js";
 import usersMockData from "../data/Users.js";
 
+import { slugify } from "./utils/slugify.js";
+
 const router = express.Router();
 
 router.post("/categories", async (req: Request, res: Response, next: NextFunction) => {
@@ -40,6 +42,7 @@ router.post("/products", async (req: Request, res: Response, next: NextFunction)
     // Convert product data with string categories to ObjectIds
     const productsWithObjectIds = productsMockData.map((product) => ({
       ...product,
+      slug: slugify(product.name),
       categories: product.categories.map((catSlug) => categoryLookup.get(catSlug)).filter(Boolean), // Remove any undefined values
     }));
 

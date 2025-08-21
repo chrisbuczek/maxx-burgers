@@ -1,0 +1,47 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Server (tsx)",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/server/src/index.ts",
+      "runtimeArgs": ["--loader", "tsx/esm"],
+      "cwd": "${workspaceFolder}/server",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "integratedTerminal",
+      "restart": true,
+      "skipFiles": ["<node_internals>/**", "node_modules/**"],
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/server/**",
+        "!**/node_modules/**"
+      ]
+    },
+    {
+      "name": "Debug Server (nodemon)",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "nodemon",
+      "program": "${workspaceFolder}/server/src/index.ts",
+      "cwd": "${workspaceFolder}/server",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "integratedTerminal",
+      "restart": true,
+      "skipFiles": ["<node_internals>/**", "node_modules/**"]
+    },
+    {
+      "name": "Attach to Running Server",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "restart": true,
+      "localRoot": "${workspaceFolder}/server",
+      "remoteRoot": "${workspaceFolder}/server",
+      "skipFiles": ["<node_internals>/**", "node_modules/**"]
+    }
+  ]
+}

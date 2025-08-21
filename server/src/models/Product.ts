@@ -4,6 +4,7 @@ import type { IProduct } from "../types/Products.js";
 const productSchema = new mongoose.Schema<IProduct>(
   {
     name: { type: String, required: true },
+    slug: { type: String, required: true, unique: true },
     categories: { type: [mongoose.Schema.Types.ObjectId], required: true, ref: "Category" },
     price: { type: Number, required: true },
     image: { type: String, required: false },
