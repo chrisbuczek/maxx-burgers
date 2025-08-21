@@ -13,15 +13,16 @@ router.get("/:id", async (req: Request, res: Response) => {
   const id = req.params.id;
   const product = await Product.findById(id);
   if (!product) {
-    res.status(404).json({ success: false, message: "Product not found" });
+    return res.status(404).json({ success: false, message: "Product not found" });
   }
   res.json({ product });
 });
 
+// TODO: add role access for admin and user
 router.post("/create", async (req, res) => {
   const { name, categories, price, image, isActive } = req.body;
 
-  //TODO: validate fields, return required field error
+  //TODO: validate fields, return required field error, DTO???
 
   const slug = slugify(name);
   const newProduct = await Product.create({
@@ -33,13 +34,38 @@ router.post("/create", async (req, res) => {
     isActive,
   });
   if (!newProduct) {
-    res.status(404).json({ success: false, message: "Failed to create the product" });
+    return res.status(404).json({ success: false, message: "Failed to create the product" });
   }
   res.json({ message: "List of users" });
 });
 
-router.put("/update/:id", (req, res) => {
-  res.json({ message: "List of users" });
+// TODO: add role access only for admin
+router.put("/update/:id", async (req, res) => {
+  const id = req.params.id;
+  const { name, categories, price, image, isActive } = req.body;
+  //TODO: validate data
+  const updateData = await Product.findById(id);
+  if (!updateData) {
+    return res.status(404).json({ success: false, message: "Failed to find product with provided id" });
+  }
+  if (name) {
+    updateData.name = name;
+    updateData.slug = slugify(name);
+  }
+  if (categories) updateData.categories = categories;
+  if (price) updateData.price = price;
+  if (image) updateData.image = image;
+  if (isActive !== undefined) updateData.isActive = isActive;
+
+  const updatedProduct = await Product.findByIdAndUpdate(id, updateData, {
+    new: true, // Return updated document
+    runValidators: true, // Run schema validation
+  });
+  res.json({
+    success: true,
+    data: updatedProduct,
+    message: "Product updated successfully",
+  });
 });
 
 // TODO: add role access only for admin

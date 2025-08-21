@@ -53,14 +53,13 @@
   - Product (burger details, price, ingredients, images)
   - Category (burger types)
   - Order (user, items, total, status, payment)
-  - Cart (temporary storage)
+  - ~~Cart (temporary storage)~~ → Using client-side Redux cart instead
 
 ### 1.3 Core API Endpoints
 
 - [ ] User authentication routes (register, login, logout, refresh)
-- [ ] Product routes (CRUD operations)
+- [x] Product routes (CRUD operations)
 - [ ] Category routes
-- [ ] Cart management routes
 - [ ] Order management routes
 - [ ] User profile routes
 
@@ -171,14 +170,16 @@
 - [ ] Search functionality
 - [ ] Image optimization and lazy loading
 
-### 4.2 Shopping Cart
+### 4.2 Shopping Cart (Client-Side with Redux)
 
-- [ ] Add to cart functionality
-- [ ] Cart sidebar/page
-- [ ] Quantity adjustment
-- [ ] Remove items
-- [ ] Cart persistence (localStorage + Redux)
+- [ ] Set up Redux cart slice with TypeScript
+- [ ] Add to cart functionality (Redux actions)
+- [ ] Cart sidebar/page component
+- [ ] Quantity adjustment (increment/decrement)
+- [ ] Remove items from cart
+- [ ] Cart persistence with localStorage
 - [ ] Cart total calculations
+- [ ] Cart validation before checkout (verify prices server-side)
 
 ### 4.3 Checkout Process
 
