@@ -10,6 +10,9 @@ import productsMockData from "../data/Products.js";
 import User from "./models/User.js";
 import usersMockData from "../data/Users.js";
 
+import Order from "./models/Order.js";
+import ordersMockData from "../data/Orders.js";
+
 import { slugify } from "./utils/slugify.js";
 
 const router = express.Router();
@@ -66,8 +69,44 @@ router.post("/users", async (req: Request, res: Response, next: NextFunction) =>
 
     res.status(201).json({
       success: true,
-      message: `${user.length} categories seeded successfully`,
+      message: `${user.length} users seeded successfully`,
       data: user,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// remember to add users before orders
+router.post("/orders", async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    await Order.deleteMany({});
+
+    const users = await User.find();
+    const products = await Product.find();
+
+    const userLookup = new Map(users.map((user) => [user.email, user._id]));
+    const productLookup = new Map(products.map((product) => [product.name, product._id]));
+
+    const ordersWithObjectIds = ordersMockData
+      .map((order) => ({
+        ...order,
+        user: userLookup.get(order.user),
+        orderItems: order.orderItems
+          .map((item) => ({
+            quantity: item.quantity,
+            product: productLookup.get(item.product),
+          }))
+          .filter((item) => item.product), // Remove items with invalid product references
+      }))
+      .filter((order) => order.user); // Remove orders with invalid user references
+
+    const orders = await Order.insertMany(ordersWithObjectIds);
+
+    res.status(201).json({
+      success: true,
+      message: `${orders.length} orders seeded successfully`,
+      data: orders,
     });
   } catch (error) {
     next(error);
