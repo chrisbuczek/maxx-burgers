@@ -44,20 +44,20 @@ router.put("/update/:id", async (req, res) => {
   const id = req.params.id;
   const { name, categories, price, image, isActive } = req.body;
   //TODO: validate data
-  const updateData = await Product.findById(id);
-  if (!updateData) {
+  const foundProduct = await Product.findById(id);
+  if (!foundProduct) {
     return res.status(404).json({ success: false, message: "Failed to find product with provided id" });
   }
   if (name) {
-    updateData.name = name;
-    updateData.slug = slugify(name);
+    foundProduct.name = name;
+    foundProduct.slug = slugify(name);
   }
-  if (categories) updateData.categories = categories;
-  if (price) updateData.price = price;
-  if (image) updateData.image = image;
-  if (isActive !== undefined) updateData.isActive = isActive;
+  if (categories) foundProduct.categories = categories;
+  if (price) foundProduct.price = price;
+  if (image) foundProduct.image = image;
+  if (isActive !== undefined) foundProduct.isActive = isActive;
 
-  const updatedProduct = await Product.findByIdAndUpdate(id, updateData, {
+  const updatedProduct = await Product.findByIdAndUpdate(id, foundProduct, {
     new: true, // Return updated document
     runValidators: true, // Run schema validation
   });

@@ -8,7 +8,7 @@ router.get("/login", (req, res) => {
   res.json({ message: "List of users" });
 });
 
-router.get("/create", (req, res) => {
+router.get("/register", (req, res) => {
   res.json({ message: "List of users" });
 });
 
