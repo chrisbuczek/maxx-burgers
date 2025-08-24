@@ -8,7 +8,15 @@ router.get("/login", (req, res) => {
   res.json({ message: "List of users" });
 });
 
+router.get("/logout", async (req, res) => {
+  res.json({ message: "Logout" });
+});
+
 router.get("/register", (req, res) => {
+  res.json({ message: "List of users" });
+});
+
+router.get("/delete", (req, res) => {
   res.json({ message: "List of users" });
 });
 

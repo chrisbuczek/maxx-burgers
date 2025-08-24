@@ -1,7 +1,9 @@
 import express from "express";
-import type { Request, Response } from "express";
+import type { Request, Response, NextFunction } from "express";
+import mongoose from "mongoose";
 const router = express.Router();
 import Product from "../models/Product.js";
+import Category from "../models/Category.js";
 import { slugify } from "../utils/slugify.js";
 
 router.get("/", async (req, res) => {
@@ -18,25 +20,67 @@ router.get("/:id", async (req: Request, res: Response) => {
   res.json({ product });
 });
 
-// TODO: add role access for admin and user
-router.post("/create", async (req, res) => {
-  const { name, categories, price, image, isActive } = req.body;
+router.post("/create", async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { name, categories, price, image, isActive } = req.body;
 
-  //TODO: validate fields, return required field error, DTO???
+    if (!name || !price) {
+      return res.status(400).json({
+        success: false,
+        message: "Name and price are required",
+      });
+    }
 
-  const slug = slugify(name);
-  const newProduct = await Product.create({
-    name,
-    slug,
-    categories,
-    price,
-    image,
-    isActive,
-  });
-  if (!newProduct) {
-    return res.status(404).json({ success: false, message: "Failed to create the product" });
+    let categoryIds: mongoose.Types.ObjectId[] = [];
+    if (categories && categories.length > 0) {
+      const foundCategories = await Category.find({
+        $or: [{ slug: { $in: categories } }, { name: { $in: categories } }],
+      });
+
+      categoryIds = foundCategories.map((cat) => cat._id as mongoose.Types.ObjectId);
+      if (foundCategories.length !== categories.length) {
+        console.warn(
+          `Some categories not found. Requested: ${categories}, Found: ${foundCategories.map((c) => c.slug)}`,
+        );
+      }
+    }
+
+    const slug = slugify(name);
+
+    const newProduct = await Product.create({
+      name,
+      slug,
+      categories: categoryIds, // Use ObjectIds instead of strings
+      price,
+      image: image || "",
+      isActive: isActive !== undefined ? isActive : true,
+    });
+
+    res.status(201).json({
+      success: true,
+      data: newProduct,
+      message: "Product created successfully",
+    });
+  } catch (error: unknown) {
+    // Handle duplicate slug error
+    if (error && typeof error === "object" && "code" in error && error.code === 11000) {
+      return res.status(400).json({
+        success: false,
+        message: "A product with this name already exists",
+      });
+    }
+
+    // Handle validation errors
+    if (error && typeof error === "object" && "name" in error && error.name === "ValidationError") {
+      return res.status(400).json({
+        success: false,
+        message: "Validation error",
+        errors: "Validation failed",
+      });
+    }
+
+    next(error);
   }
-  res.json({ message: "List of users" });
 });
 
 // TODO: add role access only for admin

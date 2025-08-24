@@ -22,7 +22,7 @@
         }
       }
     },
-    "/api/v1/users/create": {
+    "/api/v1/users/register": {
       "get": {
         "description": "",
         "responses": {
@@ -111,11 +111,38 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "categories": {
+                  "example": "any"
+                },
+                "price": {
+                  "example": "any"
+                },
+                "image": {
+                  "example": "any"
+                },
+                "isActive": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
@@ -159,6 +186,16 @@
       }
     },
     "/api/v1/seed/users": {
+      "post": {
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/v1/seed/orders": {
       "post": {
         "description": "",
         "responses": {
