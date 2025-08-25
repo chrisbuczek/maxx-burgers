@@ -7,7 +7,8 @@ router.get("/", async (req, res) => {
   res.json({ orders });
 });
 
-router.get("/create", async (req, res) => {
+router.post("/create", async (req, res) => {
+  const { user, } = req.body
   res.json({ message: "List of users" });
 });
 
@@ -15,8 +16,7 @@ router.put("/update", (req, res) => {
   res.json({ message: "List of users" });
 });
 
-router.get("/create", (req, res) => {
-  res.json({ message: "List of users" });
-});
+router.delete('/delete')
 
 export default router;
+

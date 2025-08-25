@@ -97,9 +97,9 @@ router.post("/orders", async (req: Request, res: Response, next: NextFunction) =
             quantity: item.quantity,
             product: productLookup.get(item.product),
           }))
-          .filter((item) => item.product), // Remove items with invalid product references
+          .filter((item) => item.product),
       }))
-      .filter((order) => order.user); // Remove orders with invalid user references
+      .filter((order) => order.user);
 
     const orders = await Order.insertMany(ordersWithObjectIds);
 
