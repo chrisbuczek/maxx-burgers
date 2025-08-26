@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/create", async (req, res) => {
-  const { user, } = req.body
+  const { user } = req.body;
   res.json({ message: "List of users" });
 });
 
@@ -16,7 +16,8 @@ router.put("/update", (req, res) => {
   res.json({ message: "List of users" });
 });
 
-router.delete('/delete')
+router.delete("/delete", async (req, res) => {
+  res.json({ message: "Deleted order" });
+});
 
 export default router;
-

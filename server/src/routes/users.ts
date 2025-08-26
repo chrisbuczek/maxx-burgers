@@ -20,4 +20,9 @@ router.get("/delete", (req, res) => {
   res.json({ message: "List of users" });
 });
 
+// ???
+router.get("/refresh", (req, res) => {
+  res.json({ message: "List of users" });
+});
+
 export default router;
