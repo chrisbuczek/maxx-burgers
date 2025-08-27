@@ -4,7 +4,10 @@ import { ThreeButtons } from "./components/ThreeButtons/ThreeButtons";
 function App() {
   return (
     <>
-      <ThreeButtons />
+      <div className="flex flex-col items-center">
+        <video src={"/video0.mp4"} autoPlay loop />
+        <ThreeButtons />
+      </div>
     </>
   );
 }
