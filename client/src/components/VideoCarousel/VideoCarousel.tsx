@@ -1,20 +1,39 @@
 import React from "react";
 
-const data = [
-  { id: 1, fileName: "video0.mp4" },
-  { id: 2, fileName: "video1.mp4" },
-  { id: 3, fileName: "video2.mp4" },
-];
-
-interface IVideoCarousel {
-  data: { fileName: string }[];
+export interface VideoCarouselItem {
+  id: number;
+  fileName: string;
 }
 
-export const VideoCarousel: React.FC<IVideoCarousel[]> = () => {
+interface VideoCarouselProps {
+  data: VideoCarouselItem[];
+  className?: string;
+  autoPlay?: boolean;
+  loop?: boolean;
+  muted?: boolean;
+  controls?: boolean;
+}
+
+export const VideoCarousel: React.FC<VideoCarouselProps> = ({
+  data,
+  className = "",
+  autoPlay = false,
+  loop = false,
+  muted = false,
+  controls = true,
+}) => {
   return (
-    <div>
+    <div className={className}>
       {data.map((item) => (
-        <video src={`/${item.fileName}`} key={item.id}></video>
+        <video
+          key={item.id}
+          src={`/${item.fileName}`}
+          autoPlay={autoPlay}
+          loop={loop}
+          muted={muted}
+          controls={controls}
+          className="max-w-full h-auto"
+        />
       ))}
     </div>
   );

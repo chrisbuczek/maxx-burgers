@@ -28,8 +28,10 @@ export const ThreeButtons = ({ className = "" }: { className?: string }) => {
     <div className={"flex flex-row gap-2 " + className}>
       {data.map(({ text, icon, position, id }) => (
         <SquareButton key={id} position={position as position}>
-          <img src={icon} aria-label={text} alt={text} />
-          {text}
+          <div className="flex flex-col gap-1 items-center">
+            <img className="max-h-8" src={icon} aria-label={text} alt={text} />
+            {text}
+          </div>
         </SquareButton>
       ))}
     </div>
@@ -53,7 +55,7 @@ const SquareButton: React.FC<SquareButton> = ({
     <button
       key={key}
       className={
-        `bg-maxgreen text-maxbeige py-4 px-14 ${
+        `bg-maxgreen text-maxbeige py-4 px-14 max-h-[100px] ${
           position === "left" && "rounded-l-4xl"
         } ${position === "right" && "rounded-r-4xl"}` + className
       }
