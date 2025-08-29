@@ -59,7 +59,7 @@
 
 - [ ] User authentication routes (register, login, logout, refresh)
 - [x] Product routes (CRUD operations)
-- [ ] Category routes
+- [x] Category routes
 - [ ] Order management routes
 - [ ] User profile routes
 

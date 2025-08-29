@@ -21,11 +21,14 @@ const data = [
   },
 ];
 
-export const ThreeButtons = () => {
+type position = "left" | "center" | "right";
+
+export const ThreeButtons = ({ className = "" }: { className?: string }) => {
   return (
-    <div className="flex flex-row gap-2">
+    <div className={"flex flex-row gap-2 " + className}>
       {data.map(({ text, icon, position, id }) => (
-        <SquareButton key={id} icon={icon} altText={text} position={position}>
+        <SquareButton key={id} position={position as position}>
+          <img src={icon} aria-label={text} alt={text} />
           {text}
         </SquareButton>
       ))}
@@ -34,29 +37,28 @@ export const ThreeButtons = () => {
 };
 
 type SquareButton = {
-  icon: string;
   key: number | string;
-  altText: string;
   position: "left" | "center" | "right";
   children: React.ReactNode;
+  className?: string;
 };
 
 const SquareButton: React.FC<SquareButton> = ({
-  icon,
   key,
-  altText,
   position,
   children,
+  className = "",
 }) => {
   return (
     <button
       key={key}
-      className={`bg-maxgreen py-4 px-14 ${
-        position === "left" && "rounded-l-4xl"
-      } ${position === "right" && "rounded-r-4xl"}`}
+      className={
+        `bg-maxgreen text-maxbeige py-4 px-14 ${
+          position === "left" && "rounded-l-4xl"
+        } ${position === "right" && "rounded-r-4xl"}` + className
+      }
     >
-      <img src={icon} alt={altText} />
-      <div className="text-maxbeige">{children}</div>
+      {children}
     </button>
   );
 };
