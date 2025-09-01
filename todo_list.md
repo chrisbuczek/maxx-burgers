@@ -60,7 +60,7 @@
 - [ ] User authentication routes (register, login, logout, refresh)
 - [x] Product routes (CRUD operations)
 - [x] Category routes
-- [ ] Order management routes
+- [x] Order management routes
 - [ ] User profile routes
 
 ### 1.4 Authentication System
