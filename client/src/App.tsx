@@ -2,9 +2,11 @@ import "./App.css";
 import ChooseCup from "./components/ChooseCup/ChooseCup";
 import { ThreeButtons } from "./components/ThreeButtons/ThreeButtons";
 import { useEffect, useState } from "react";
+import { useQuery } from "./hooks/useQuery";
 
 function App() {
   const [scrollY, setScrollY] = useState(0);
+  const { data: categories, isLoading, isSuccess, isError } = useQuery();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,10 +16,6 @@ function App() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // useEffect(() => {
-  //   const data = await fetch("http://localhost:8080")
-  // }, [])
 
   return (
     <>
