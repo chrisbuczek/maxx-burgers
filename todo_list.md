@@ -62,6 +62,7 @@
 - [x] Category routes
 - [x] Order management routes
 - [ ] User profile routes
+- [x] Install CORS and init in app: npm install cors @types/cors
 
 ### 1.4 Authentication System
 

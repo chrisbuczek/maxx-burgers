@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-// import cors from "cors";
+import cors from "cors";
 import mongoose from "mongoose";
 import routes from "./routes/index.js";
 import databaseSeederRoutes from "./databaseSeeder.js";
@@ -20,7 +20,12 @@ if (!process.env.DB_CONN_STRING || !process.env.DB_NAME) {
     .catch((err: Error) => console.log("ERROR", err));
 }
 
-// app.use(cors({ origin: process.env.CORS_ORIGIN, credentials: true }));
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "http://localhost:3000"],
+    credentials: true,
+  }),
+);
 app.use(express.json());
 
 // Mount API routes under /api/v1 prefix

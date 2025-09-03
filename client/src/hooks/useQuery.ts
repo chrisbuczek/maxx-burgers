@@ -1,8 +1,14 @@
-import axios from "axios";
+import { type AxiosPromise } from "axios";
 import { useEffect, useState } from "react";
 
-export const useQuery = () => {
-  const [state, setState] = useState({
+export const useQuery = <T = unknown>(fn: () => AxiosPromise<T>) => {
+  const [state, setState] = useState<{
+    data: T | null;
+    isLoading: boolean;
+    isSuccess: boolean;
+    isError: boolean;
+    error: string;
+  }>({
     data: null,
     isLoading: false,
     isSuccess: false,
@@ -11,9 +17,9 @@ export const useQuery = () => {
   });
 
   useEffect(() => {
+    if (!fn) return;
     setState((prev) => ({ ...prev, isLoading: true }));
-    axios
-      .get("http://localhost:8080")
+    fn()
       .then((response) => {
         setState((prev) => ({
           ...prev,
@@ -37,7 +43,7 @@ export const useQuery = () => {
       .finally(() => {
         setState((prev) => ({ ...prev, isLoading: false }));
       });
-  }, []);
+  }, [fn]);
 
   return state;
 };
