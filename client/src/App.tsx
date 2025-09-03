@@ -3,10 +3,17 @@ import ChooseCup from "./components/ChooseCup/ChooseCup";
 import { ThreeButtons } from "./components/ThreeButtons/ThreeButtons";
 import { useEffect, useState } from "react";
 import { useQuery } from "./hooks/useQuery";
+import type { ICategory } from "./types/categories";
+import { getCategories } from "./API";
 
 function App() {
   const [scrollY, setScrollY] = useState(0);
-  const { data, isLoading, isSuccess, isError } = useQuery();
+  const {
+    data: categories,
+    isLoading,
+    isSuccess,
+    isError,
+  } = useQuery<ICategory>(getCategories);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,8 +41,10 @@ function App() {
               <ChooseCup />
             </div>
             <div>
-              {data &&
-                data?.categories.map((category) => <div>{category.name}</div>)}
+              {categories &&
+                categories?.categories.map((category) => (
+                  <div>{category.name}</div>
+                ))}
             </div>
           </div>
         </div>

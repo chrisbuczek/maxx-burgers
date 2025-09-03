@@ -1,7 +1,21 @@
 import { type AxiosPromise } from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-export const useQuery = <T = unknown>(fn: () => AxiosPromise<T>) => {
+interface QueryConfig<T> {
+  onSuccess?: (data: T) => void;
+  onError?: (error: Error) => void;
+}
+
+const defaultConfig: QueryConfig<unknown> = {
+  onSuccess: () => {},
+  onError: () => {},
+};
+
+export const useQuery = <T = unknown>(
+  fn: () => AxiosPromise<T>,
+  config: QueryConfig<T> = defaultConfig
+) => {
+  const { onSuccess, onError } = config;
   const [state, setState] = useState<{
     data: T | null;
     isLoading: boolean;
@@ -16,7 +30,7 @@ export const useQuery = <T = unknown>(fn: () => AxiosPromise<T>) => {
     error: "",
   });
 
-  useEffect(() => {
+  const runQuery = useCallback(() => {
     if (!fn) return;
     setState((prev) => ({ ...prev, isLoading: true }));
     fn()
@@ -29,6 +43,7 @@ export const useQuery = <T = unknown>(fn: () => AxiosPromise<T>) => {
           isError: false,
           error: "",
         }));
+        onSuccess?.(response.data);
       })
       .catch((err) => {
         setState((prev) => ({
@@ -39,11 +54,16 @@ export const useQuery = <T = unknown>(fn: () => AxiosPromise<T>) => {
           isSuccess: false,
           error: err.message || "Failed to fetch",
         }));
+        onError?.(err);
       })
       .finally(() => {
         setState((prev) => ({ ...prev, isLoading: false }));
       });
-  }, [fn]);
+  }, [fn, onSuccess, onError]);
 
-  return state;
+  useEffect(() => {
+    runQuery();
+  }, [fn, runQuery]);
+
+  return { ...state, refetch: runQuery };
 };
