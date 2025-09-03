@@ -8,12 +8,15 @@ import { getCategories } from "./API";
 
 function App() {
   const [scrollY, setScrollY] = useState(0);
+  const [localData, setLocalData] = useState<ICategory | null>(null);
   const {
-    data: categories,
+    data: initialFetchData,
     isLoading,
-    isSuccess,
     isError,
-  } = useQuery<ICategory>(getCategories);
+    isSuccess,
+  } = useQuery<ICategory>(getCategories, {
+    onSuccess: (data) => setLocalData(data),
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,8 +44,11 @@ function App() {
               <ChooseCup />
             </div>
             <div>
-              {categories &&
-                categories?.categories.map((category) => (
+              {isLoading && <div>is loading...</div>}
+              {isError && <div>is error...</div>}
+              {isSuccess && <div>is success...</div>}
+              {localData &&
+                localData?.categories.map((category) => (
                   <div>{category.name}</div>
                 ))}
             </div>
