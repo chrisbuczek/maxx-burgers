@@ -47,8 +47,8 @@ function App() {
               {isLoading && <div>is loading...</div>}
               {isError && <div>is error...</div>}
               {isSuccess && <div>is success...</div>}
-              {localData &&
-                localData?.categories.map((category) => (
+              {initialFetchData &&
+                initialFetchData?.categories.map((category) => (
                   <div>{category.name}</div>
                 ))}
             </div>

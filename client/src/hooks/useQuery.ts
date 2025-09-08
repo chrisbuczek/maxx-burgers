@@ -63,7 +63,7 @@ export const useQuery = <T = unknown>(
 
   useEffect(() => {
     runQuery();
-  }, [fn, runQuery]);
+  }, []);
 
   return { ...state, refetch: runQuery };
 };
