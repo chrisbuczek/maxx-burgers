@@ -30,7 +30,7 @@ export const useQuery = <T = unknown>(
     error: "",
   });
 
-  const runQuery = useCallback(() => {
+  const runQuery = () => {
     if (!fn) return;
     setState((prev) => ({ ...prev, isLoading: true }));
     fn()
@@ -59,11 +59,9 @@ export const useQuery = <T = unknown>(
       .finally(() => {
         setState((prev) => ({ ...prev, isLoading: false }));
       });
-  }, [fn, onSuccess, onError]);
+  };
 
-  useEffect(() => {
-    runQuery();
-  }, []);
+  useEffect(runQuery, [fn]);
 
   return { ...state, refetch: runQuery };
 };

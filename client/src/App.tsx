@@ -27,6 +27,10 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    console.log(localData);
+  });
+
   return (
     <>
       <div className="flex flex-col items-center">
