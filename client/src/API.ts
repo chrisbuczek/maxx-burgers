@@ -6,9 +6,6 @@ const API = axios.create({
   baseURL,
 });
 
-export const getCategories = () =>
-  API.get("/categories").then((res) => res.data);
+export const getCategories = () => API.get("/categories");
 
-export const getCategoriesById = (id: string) => {
-  API.get(`/categories/${id}`).then(({ data }) => data);
-};
+export const getCategoriesById = (id: string) => API.get(`/categories/${id}`);
