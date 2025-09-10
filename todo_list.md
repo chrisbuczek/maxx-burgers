@@ -64,10 +64,10 @@
 - [ ] User profile routes
 - [x] Install CORS and init in app: npm install cors @types/cors
 
-### 1.4 Authentication System
+### 1.4 Authentication System !!!
 
-- [ ] Install bcryptjs for password hashing
-- [ ] Install jsonwebtoken for JWT handling
+- [x] Install bcryptjs for password hashing
+- [x] Install jsonwebtoken for JWT handling
 - [ ] Create JWT middleware for protected routes
 - [ ] Implement refresh token mechanism
 - [ ] Add password validation (minimum requirements)

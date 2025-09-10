@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 const apiBaseUrl = import.meta.env.VITE_API_URL;
 
+// without AXIOS library
 export const useQuery = ({ route }: { route: string }) => {
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
