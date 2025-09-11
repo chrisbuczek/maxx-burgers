@@ -67,7 +67,7 @@
 ### 1.4 Authentication System !!!
 
 - [x] Install bcryptjs for password hashing
-- [x] Install jsonwebtoken for JWT handling
+- [x] Install jsonwebtoken for JWT handling and @types/jsonwebtoken
 - [ ] Create JWT middleware for protected routes
 - [ ] Implement refresh token mechanism
 - [ ] Add password validation (minimum requirements)

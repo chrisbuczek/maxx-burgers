@@ -6,4 +6,5 @@ export interface IUser extends mongoose.Document {
   email: string;
   passwordHash: string;
   roles: RolesEnum[];
+  matchPassword(enteredPassword: string): Promise<boolean>;
 }
