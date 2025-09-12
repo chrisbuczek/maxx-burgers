@@ -15,8 +15,8 @@ const Products: ProductSeedData = [
       "https://maxburgers-images.futureordering.com/images/product/20412/3326D23A8916BB94214E08578B4A294ED/652x606.png",
   },
   {
-    name: "BIG Classic Chicken w Zestawie",
-    categories: ["menu", "chicken"],
+    name: "BIG Classic Wołowy w Zestawie",
+    categories: ["menu", "beef"],
     price: 40.7,
     image:
       "https://maxburgers-images.futureordering.com/images/product/20412/3326D23A8916BB94214E08578B4A294ED/652x606.png",

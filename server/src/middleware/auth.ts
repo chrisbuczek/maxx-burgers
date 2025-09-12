@@ -30,7 +30,6 @@ const auth = async (req: AuthRequest, res: Response, next: NextFunction) => {
 
       const decodedToken = jwt.verify(token, secret) as unknown as JWTPayload;
 
-      // Check if token is blacklisted
       const blacklistedToken = await BlacklistedToken.findOne({ token });
       if (blacklistedToken) {
         return res.status(401).json({ message: "Token has been invalidated" });

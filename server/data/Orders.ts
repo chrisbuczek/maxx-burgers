@@ -15,7 +15,7 @@ type OrderSeedData = {
 
 const Orders: OrderSeedData = [
   {
-    user: "admin@maxburgers.com", // User email reference
+    user: "68c48a3c38bb0151af8ca75e", // User email reference
     orderItems: [
       {
         quantity: 2,
@@ -34,7 +34,7 @@ const Orders: OrderSeedData = [
     },
   },
   {
-    user: "customer@example.com",
+    user: "68c48a3c38bb0151af8ca75e",
     orderItems: [
       {
         quantity: 1,

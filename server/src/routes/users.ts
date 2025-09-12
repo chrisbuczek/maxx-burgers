@@ -15,6 +15,7 @@ const router = express.Router();
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   const foundUser = await User.findOne({ email });
+  console.log(foundUser);
   if (foundUser && (await foundUser.matchPassword(password))) {
     res.json({
       name: foundUser.name,
@@ -33,11 +34,9 @@ router.post("/logout", auth, async (req: AuthRequest, res) => {
     const token = req.headers.authorization?.split(" ")[1];
 
     if (token) {
-      // Decode token to get expiration time
       const decoded = jwt.decode(token) as jwt.JwtPayload;
       const expiresAt = new Date((decoded.exp || 0) * 1000);
 
-      // Add token to blacklist
       await BlacklistedToken.create({
         token,
         expiresAt,
@@ -54,7 +53,15 @@ router.post("/logout", auth, async (req: AuthRequest, res) => {
   }
 });
 
-router.post("/register", (req, res) => {});
+router.post("/register", async (req, res) => {
+  const { name, email, password } = req.body;
+  // server validation for name, email, password
+  const newUser = await User.create({
+    name,
+    email,
+    password,
+  });
+});
 
 router.get("/delete", (req, res) => {
   res.json({ message: "List of users" });

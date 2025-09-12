@@ -65,7 +65,8 @@ router.post("/users", async (req: Request, res: Response, next: NextFunction) =>
   try {
     await User.deleteMany({});
 
-    const user = await User.insertMany(usersMockData);
+    // Use create() instead of insertMany() to ensure pre('save') middleware runs and passwords get hashed
+    const user = await User.create(usersMockData);
 
     res.status(201).json({
       success: true,
