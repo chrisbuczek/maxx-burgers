@@ -13,6 +13,7 @@ interface AuthRequest extends Request {
 const router = express.Router();
 
 router.post("/login", async (req, res) => {
+  /*  #swagger.tags = ['Authentication'] */
   const { email, password } = req.body;
   const foundUser = await User.findOne({ email });
   console.log(foundUser);
@@ -67,9 +68,10 @@ router.get("/delete", (req, res) => {
   res.json({ message: "List of users" });
 });
 
-// ???
+// Protected route example
 router.get("/refresh", auth, (req, res) => {
-  res.json({ message: "List of users" });
+  /*  #swagger.tags = ['Authentication'] */
+  res.json({ message: "Token refreshed successfully" });
 });
 
 export default router;

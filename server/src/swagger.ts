@@ -9,6 +9,20 @@ const doc = {
   host: `localhost:${process.env.PORT || 8080}`,
   basePath: "/",
   schemes: ["http", "https"],
+  securityDefinitions: {
+    bearerAuth: {
+      type: "apiKey",
+      name: "Authorization",
+      scheme: "bearer",
+      in: "header",
+      description: "Enter JWT token in format: Bearer {token}",
+    },
+  },
+  security: [
+    {
+      bearerAuth: [],
+    },
+  ],
 };
 
 const outputFile = "./swagger-output.json";
