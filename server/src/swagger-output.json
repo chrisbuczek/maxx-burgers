@@ -56,6 +56,9 @@
     },
     "/api/v1/users/logout": {
       "post": {
+        "tags": [
+          "Authentication"
+        ],
         "description": "",
         "parameters": [
           {
@@ -119,20 +122,12 @@
         "tags": [
           "Authentication"
         ],
-        "description": "Refresh user token - requires authentication",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Token refreshed successfully"
-          },
-          "401": {
-            "description": "Unauthorized - invalid or missing token"
+            "description": "OK"
           }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ]
+        }
       }
     },
     "/api/v1/products/": {
@@ -359,6 +354,16 @@
             "type": "string"
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/restaurant/": {
+      "get": {
+        "description": "",
         "responses": {
           "200": {
             "description": "OK"

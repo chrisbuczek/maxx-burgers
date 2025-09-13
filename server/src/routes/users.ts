@@ -16,7 +16,6 @@ router.post("/login", async (req, res) => {
   /*  #swagger.tags = ['Authentication'] */
   const { email, password } = req.body;
   const foundUser = await User.findOne({ email });
-  console.log(foundUser);
   if (foundUser && (await foundUser.matchPassword(password))) {
     res.json({
       name: foundUser.name,
@@ -65,7 +64,7 @@ router.post("/register", async (req, res) => {
   });
 });
 
-router.get("/delete", (req, res) => {
+router.get("/delete", auth, async (req, res) => {
   res.json({ message: "List of users" });
 });
 
