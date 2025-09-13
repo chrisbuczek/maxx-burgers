@@ -31,6 +31,7 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/logout", auth, async (req: AuthRequest, res) => {
+  /*  #swagger.tags = ['Authentication'] */
   try {
     const token = req.headers.authorization?.split(" ")[1];
 

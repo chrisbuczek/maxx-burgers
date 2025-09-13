@@ -5,6 +5,7 @@ const router = express.Router();
 import Product from "../models/Product.js";
 import Category from "../models/Category.js";
 import { slugify } from "../utils/slugify.js";
+import auth from "../middleware/auth.js";
 
 router.get("/", async (req, res) => {
   const products = await Product.find();
@@ -20,7 +21,7 @@ router.get("/:id", async (req: Request, res: Response) => {
   res.json({ product });
 });
 
-router.post("/create", async (req: Request, res: Response, next: NextFunction) => {
+router.post("/create", auth, async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { name, categories, price, image, isActive } = req.body;
 
