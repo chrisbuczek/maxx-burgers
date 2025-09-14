@@ -6,6 +6,8 @@ import auth from "../middleware/auth.js";
 import generateToken from "../tokenGenerate.js";
 import jwt from "jsonwebtoken";
 import type { IUser } from "../types/User.js";
+import { registerSchema } from "../validators/userValidators.js";
+import { validate } from "../middleware/validate.js";
 
 interface AuthRequest extends Request {
   user?: IUser;
@@ -54,9 +56,9 @@ router.post("/logout", auth, async (req: AuthRequest, res) => {
   }
 });
 
-router.post("/register", async (req, res) => {
+router.post("/register", validate(registerSchema), async (req, res) => {
   const { name, email, password } = req.body;
-  // server validation for name, email, password
+
   const newUser = await User.create({
     name,
     email,
