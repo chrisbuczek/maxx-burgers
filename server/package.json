@@ -27,7 +27,8 @@
     "mongodb": "^6.18.0",
     "mongoose": "^8.17.1",
     "swagger-autogen": "^2.23.7",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "zod": "^4.1.8"
   },
   "devDependencies": {
     "@eslint/css": "^0.10.0",
