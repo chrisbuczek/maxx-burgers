@@ -68,7 +68,7 @@
 
 - [x] Install bcryptjs for password hashing
 - [x] Install jsonwebtoken for JWT handling and @types/jsonwebtoken
-- [ ] Create JWT middleware for protected routes
+- [x] Create JWT middleware for protected routes
 - [ ] Implement refresh token mechanism
 - [ ] Add password validation (minimum requirements)
 - [ ] Add email validation
@@ -86,6 +86,12 @@
 
 - [ ] Create sample data for all models
 - [ ] Move images to cloudinary
+
+## 1.7 Additional
+
+- [ ] Add docker
+- [ ] Add email verification when registering account
+- [ ] Add error logging
 
 ---
 

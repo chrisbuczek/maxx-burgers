@@ -1,14 +1,17 @@
 import express from "express";
 import Category from "../models/Category.js";
 import { slugify } from "../utils/slugify.js";
+import auth from "../middleware/auth.js";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
+  /*  #swagger.tags = ['Categories']  */
   const categories = await Category.find();
   res.json({ categories });
 });
 
 router.get("/:id", async (req, res) => {
+  /*  #swagger.tags = ['Categories']  */
   const id = req.params.id;
   const category = await Category.findById(id);
   if (!category) {
@@ -18,7 +21,8 @@ router.get("/:id", async (req, res) => {
 });
 
 // TODO: role only for admin
-router.get("/create", (req, res) => {
+router.get("/create", auth, (req, res) => {
+  /*  #swagger.tags = ['Categories']  */
   const { name, image, isActive } = req.body;
 
   const createdCategory = Category.create({ name: name, slug: slugify(name), image: image, isActive: isActive });
@@ -27,6 +31,7 @@ router.get("/create", (req, res) => {
 
 // TODO: role only for admin
 router.put("/update/:id", async (req, res) => {
+  /*  #swagger.tags = ['Categories']  */
   const id = req.params.id;
   const { name, image, isActive } = req.body;
   const foundCategory = await Category.findById(id);
@@ -48,6 +53,7 @@ router.put("/update/:id", async (req, res) => {
 
 // TODO: role only for admin
 router.put("/delete/:id", (req, res) => {
+  /*  #swagger.tags = ['Categories']  */
   res.json({ message: "List of users" });
 });
 

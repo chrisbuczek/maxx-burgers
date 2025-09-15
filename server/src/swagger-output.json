@@ -144,6 +144,9 @@
     },
     "/api/v1/products/": {
       "get": {
+        "tags": [
+          "Products"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -154,6 +157,9 @@
     },
     "/api/v1/products/{id}": {
       "get": {
+        "tags": [
+          "Products"
+        ],
         "description": "",
         "parameters": [
           {
@@ -175,6 +181,9 @@
     },
     "/api/v1/products/create": {
       "post": {
+        "tags": [
+          "Products"
+        ],
         "description": "",
         "parameters": [
           {
@@ -214,6 +223,9 @@
     },
     "/api/v1/products/update/{id}": {
       "put": {
+        "tags": [
+          "Products"
+        ],
         "description": "",
         "parameters": [
           {
@@ -259,6 +271,9 @@
     },
     "/api/v1/products/delete/{id}": {
       "delete": {
+        "tags": [
+          "Products"
+        ],
         "description": "",
         "parameters": [
           {
@@ -277,6 +292,9 @@
     },
     "/api/v1/categories/": {
       "get": {
+        "tags": [
+          "Categories"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -287,6 +305,9 @@
     },
     "/api/v1/categories/{id}": {
       "get": {
+        "tags": [
+          "Categories"
+        ],
         "description": "",
         "parameters": [
           {
@@ -308,6 +329,9 @@
     },
     "/api/v1/categories/create": {
       "get": {
+        "tags": [
+          "Categories"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -318,6 +342,9 @@
     },
     "/api/v1/categories/update/{id}": {
       "put": {
+        "tags": [
+          "Categories"
+        ],
         "description": "",
         "parameters": [
           {
@@ -357,6 +384,9 @@
     },
     "/api/v1/categories/delete/{id}": {
       "put": {
+        "tags": [
+          "Categories"
+        ],
         "description": "",
         "parameters": [
           {
@@ -375,6 +405,9 @@
     },
     "/api/v1/restaurant/": {
       "get": {
+        "tags": [
+          "Restaurants"
+        ],
         "description": "",
         "responses": {
           "200": {

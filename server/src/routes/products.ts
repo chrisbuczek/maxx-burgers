@@ -8,11 +8,13 @@ import { slugify } from "../utils/slugify.js";
 import auth from "../middleware/auth.js";
 
 router.get("/", async (req, res) => {
+  /*  #swagger.tags = ['Products']  */
   const products = await Product.find();
   res.json({ products });
 });
 
 router.get("/:id", async (req: Request, res: Response) => {
+  /*  #swagger.tags = ['Products']  */
   const id = req.params.id;
   const product = await Product.findById(id);
   if (!product) {
@@ -22,6 +24,7 @@ router.get("/:id", async (req: Request, res: Response) => {
 });
 
 router.post("/create", auth, async (req: Request, res: Response, next: NextFunction) => {
+  /*  #swagger.tags = ['Products']  */
   try {
     const { name, categories, price, image, isActive } = req.body;
 
@@ -86,6 +89,7 @@ router.post("/create", auth, async (req: Request, res: Response, next: NextFunct
 
 // TODO: add role access only for admin
 router.put("/update/:id", async (req, res) => {
+  /*  #swagger.tags = ['Products']  */
   const id = req.params.id;
   const { name, categories, price, image, isActive } = req.body;
   //TODO: validate data
@@ -115,6 +119,7 @@ router.put("/update/:id", async (req, res) => {
 
 // TODO: add role access only for admin
 router.delete("/delete/:id", async (req, res) => {
+  /*  #swagger.tags = ['Products']  */
   const deletedCount = await Product.deleteOne({ _id: req.params.id });
   res.json({ message: deletedCount });
 });
