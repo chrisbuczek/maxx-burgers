@@ -9,8 +9,12 @@ export const validate = (schema: z.ZodSchema) => {
     } catch (error) {
       if (error instanceof z.ZodError) {
         return res.status(400).json({
-          message: "Validation error",
-          details: error,
+          message: "Server validation error",
+          details: error.issues.map((err) => ({
+            field: err.path.join("."),
+            message: err.message,
+            code: err.code,
+          })),
         });
       }
       res.status(500).json({ message: "Internal server error" });
