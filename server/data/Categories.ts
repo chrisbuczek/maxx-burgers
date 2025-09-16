@@ -1,7 +1,7 @@
 import type { ICategory } from "../src/types/Category.js";
-type CategoryData = Pick<ICategory, "name" | "slug" | "image" | "isActive">[];
+type CategorySeedData = Pick<ICategory, "name" | "slug" | "image" | "isActive">[];
 
-const categories: CategoryData = [
+const categories: CategorySeedData = [
   {
     name: "limited deluxe",
     slug: "limited-deluxe",
