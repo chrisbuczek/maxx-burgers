@@ -20,9 +20,9 @@ export const VideoCarousel: React.FC<VideoCarouselProps> = ({
   desktopData,
   className = "",
   autoPlay = true,
-  loop = false,
+  loop = true,
   muted = false,
-  controls = true,
+  controls = false,
 }) => {
   const [currentSlideId, setCurrentSlideId] = useState<number>(1);
 
@@ -38,14 +38,14 @@ export const VideoCarousel: React.FC<VideoCarouselProps> = ({
 
   return (
     <div className={className}>
-      <div className="md:hidden">
+      <div className="lg:hidden">
         {data.map((item) => (
           <video
             key={item.id}
             src={`/${item.fileName}`}
             autoPlay={autoPlay}
             loop={loop}
-            muted={muted}
+            muted={autoPlay || muted}
             controls={controls}
             className={`max-w-full h-auto absolute ${
               item.id !== currentSlideId && "hidden"
@@ -53,7 +53,7 @@ export const VideoCarousel: React.FC<VideoCarouselProps> = ({
           />
         ))}
       </div>
-      <div className="hidden md:block relative">
+      <div className="hidden lg:block relative">
         {desktopData.map((item) => (
           <img
             key={item.id}
