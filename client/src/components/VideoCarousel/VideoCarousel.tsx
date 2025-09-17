@@ -47,9 +47,15 @@ export const VideoCarousel: React.FC<VideoCarouselProps> = ({
             loop={loop}
             muted={autoPlay || muted}
             controls={controls}
+            playsInline
+            disablePictureInPicture
+            controlsList="nodownload nofullscreen noremoteplayback"
             className={`max-w-full h-auto absolute ${
               item.id !== currentSlideId && "hidden"
             }`}
+            style={{
+              pointerEvents: controls ? "auto" : "none",
+            }}
           />
         ))}
       </div>

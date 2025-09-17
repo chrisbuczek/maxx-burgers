@@ -2,24 +2,17 @@ import "./App.css";
 import ChooseCup from "./components/ChooseCup/ChooseCup";
 import { ThreeButtons } from "./components/ThreeButtons/ThreeButtons";
 import { useEffect, useState } from "react";
-import { useQuery } from "./hooks/useQuery";
 import type { ICategory } from "./types/categories";
-import { getCategories } from "./API";
 import { VideoCarousel } from "./components/VideoCarousel/VideoCarousel";
 import {
   data as videoCarouselData,
   desktopData as videoCarouselDesktopData,
 } from "./components/VideoCarousel/data";
+import { LogoNavbar } from "./components/LogoNavbar/LogoNavbar";
 
 function App() {
   const [scrollY, setScrollY] = useState(0);
   const [localData, setLocalData] = useState<ICategory | null>(null);
-  // const { data, isPending, isError, isSuccess } = useQuery<ICategory>(
-  //   getCategories,
-  //   {
-  //     onSuccess: (data) => setLocalData(data),
-  //   }
-  // );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +25,7 @@ function App() {
 
   return (
     <>
+      <LogoNavbar />
       <div>
         <VideoCarousel
           data={videoCarouselData}
@@ -50,13 +44,6 @@ function App() {
             <div className="mt-20">
               <ChooseCup />
             </div>
-            {/* <div>
-              {isPending && <div>is loading...</div>}
-              {isError && <div>is error...</div>}
-              {isSuccess && <div>is success...</div>}
-              {data &&
-                data?.categories.map((category) => <div>{category.name}</div>)}
-            </div> */}
           </div>
         </div>
       </div>

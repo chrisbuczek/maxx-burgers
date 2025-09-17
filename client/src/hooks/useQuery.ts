@@ -63,3 +63,19 @@ export const useQuery = <T = unknown>(
     refetch: runQuery,
   };
 };
+
+// USE EXAMPLE:
+// const { data, isPending, isError, isSuccess } = useQuery<ICategory>(
+//   getCategories,
+//   {
+//     onSuccess: (data) => setLocalData(data),
+//   }
+// );
+
+/* <div>
+  {isPending && <div>is loading...</div>}
+  {isError && <div>is error...</div>}
+  {isSuccess && <div>is success...</div>}
+  {data &&
+    data?.categories.map((category) => <div>{category.name}</div>)}
+  </div> */
