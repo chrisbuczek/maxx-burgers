@@ -1,22 +1,23 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const data = [
   {
     id: 1,
     icon: "/threebuttons1.png",
-    text: "Zjem w MAX",
+    textKey: "eatAtMax",
     position: "left",
   },
   {
     id: 2,
     icon: "/threebuttons2.png",
-    text: "Na wynos",
+    textKey: "takeaway",
     position: "center",
   },
   {
     id: 3,
     icon: "/threebuttons3.png",
-    text: "Dostawa",
+    textKey: "delivery",
     position: "right",
   },
 ];
@@ -24,13 +25,20 @@ const data = [
 type position = "left" | "center" | "right";
 
 export const ThreeButtons = ({ className = "" }: { className?: string }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={"flex flex-row gap-2 " + className}>
-      {data.map(({ text, icon, position, id }) => (
+      {data.map(({ textKey, icon, position, id }) => (
         <SquareButton key={id} position={position as position}>
           <div className="flex flex-col gap-1 items-center">
-            <img className="max-h-8" src={icon} aria-label={text} alt={text} />
-            {text}
+            <img
+              className="max-h-8"
+              src={icon}
+              aria-label={t(textKey)}
+              alt={t(textKey)}
+            />
+            {t(textKey)}
           </div>
         </SquareButton>
       ))}

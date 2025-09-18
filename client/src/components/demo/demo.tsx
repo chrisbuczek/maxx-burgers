@@ -77,6 +77,18 @@ export type IconButtonProps =
   | IconButtonPropsWithSizeSM
   | IconButtonPropsWithSizeXS
 
+// export type IconButtonProps = IconButtonPropsWithTheme & {
+//   size: 'XL' | 'L' | 'M' | 'SM' | 'XS'
+// } & (
+//   | { size: 'XL' | 'L' | 'M'; badge?: string | number }
+//   | { size: 'SM' | 'XS'; badge?: never }
+// )
+
+// export type IconButtonProps = IconButtonPropsWithTheme & (
+//   | { size: 'XL' | 'L' | 'M'; badge?: string | number }
+//   | { size: 'SM' | 'XS'; badge?: never }
+// )
+
 // Style dictionary definitions
 // Base classes shared by all icon buttons
 const BUTTON_BASE_CLASSES =

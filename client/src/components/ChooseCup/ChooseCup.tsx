@@ -1,7 +1,6 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
 
-const ChooseCup = () => {
+export const ChooseCup = () => {
   const { t } = useTranslation();
 
   return (
@@ -17,5 +16,3 @@ const ChooseCup = () => {
     </div>
   );
 };
-
-export default ChooseCup;

@@ -1,6 +1,9 @@
 {
   "eatAtMax": "Eat at MAX",
-  "takeway": "Takeaway",
+  "takeaway": "Takeaway",
   "delivery": "Delivery",
-  "chooseCup": "Choose a reusable cup when selecting your drink."
+  "chooseCup": "Choose a reusable cup when selecting your drink.",
+  "poland": "Poland",
+  "polski": "Polski",
+  "english": "English"
 }

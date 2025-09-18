@@ -1,6 +1,9 @@
 {
   "eatAtMax": "Zjem w MAX",
-  "takeway": "Na wynos",
+  "takeaway": "Na wynos",
   "delivery": "Dostawa",
-  "chooseCup": "Wybierz kubek wielokrotnego użytku podczas dokonywania wyboru napoju."
+  "chooseCup": "Wybierz kubek wielokrotnego użytku podczas dokonywania wyboru napoju.",
+  "poland": "Poland",
+  "polski": "Polski",
+  "english": "English"
 }

@@ -26,7 +26,7 @@ export const LogoNavbar = () => {
 
   return (
     <div
-      className={`fixed top-0 w-full mx-auto h-24 z-2 bg-gradient-to-b from-maxbeige to-transparent z-10 transition-transform duration-200 ease-in-out ${
+      className={`fixed top-0 w-full mx-auto h-24 bg-gradient-to-b from-maxbeige to-transparent z-10 transition-transform duration-200 ease-in-out ${
         scrollDirection === "down" ? "-translate-y-[200px]" : "translate-y-0"
       }`}
     >

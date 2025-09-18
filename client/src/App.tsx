@@ -1,18 +1,17 @@
 import "./App.css";
-import ChooseCup from "./components/ChooseCup/ChooseCup";
+import { ChooseCup } from "./components/ChooseCup/ChooseCup";
 import { ThreeButtons } from "./components/ThreeButtons/ThreeButtons";
 import { useEffect, useState } from "react";
-import type { ICategory } from "./types/categories";
 import { VideoCarousel } from "./components/VideoCarousel/VideoCarousel";
 import {
   data as videoCarouselData,
   desktopData as videoCarouselDesktopData,
 } from "./components/VideoCarousel/data";
 import { LogoNavbar } from "./components/LogoNavbar/LogoNavbar";
+import { ChooseLanguage } from "./components/ChooseLanguage/ChooseLanguage";
 
 function App() {
   const [scrollY, setScrollY] = useState(0);
-  const [localData, setLocalData] = useState<ICategory | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,8 +40,9 @@ function App() {
             }}
           >
             <ThreeButtons className="absolute top-[-50px]" />
-            <div className="mt-20">
+            <div className="mt-20 flex flex-col gap-20">
               <ChooseCup />
+              <ChooseLanguage />
             </div>
           </div>
         </div>
