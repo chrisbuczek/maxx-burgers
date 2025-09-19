@@ -89,6 +89,7 @@
 
 ## 1.7 Additional
 
+- [ ] Add analytics + cookies permision
 - [ ] Add docker
 - [ ] Add email verification when registering account
 - [ ] Add error logging
