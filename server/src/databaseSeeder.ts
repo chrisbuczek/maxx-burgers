@@ -13,6 +13,9 @@ import usersMockData from "../data/Users.js";
 import Order from "./models/Order.js";
 import ordersMockData from "../data/Orders.js";
 
+import Restaurant from "./models/Restaurant.js";
+import restaurantsMockData from "../data/Restaurants.js";
+
 import { slugify } from "./utils/slugify.js";
 
 const router = express.Router();
@@ -108,6 +111,22 @@ router.post("/orders", async (req: Request, res: Response, next: NextFunction) =
       success: true,
       message: `${orders.length} orders seeded successfully`,
       data: orders,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post("/restaurants", async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    await Restaurant.deleteMany({});
+
+    const restaurants = await Restaurant.insertMany(restaurantsMockData);
+
+    res.status(201).json({
+      success: true,
+      message: `${restaurants.length} products seeded successfully`,
+      data: restaurants,
     });
   } catch (error) {
     next(error);

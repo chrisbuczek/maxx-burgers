@@ -455,6 +455,16 @@
           }
         }
       }
+    },
+    "/api/v1/seed/restaurants": {
+      "post": {
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
     }
   },
   "security": [
