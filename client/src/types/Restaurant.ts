@@ -1,4 +1,4 @@
-export interface ICategories {
+export interface IRestaurants {
   categories: {
     name: string;
     slug: string;
