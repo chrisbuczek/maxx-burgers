@@ -9,6 +9,6 @@ const router = express.Router();
 router.use("/users", userRoutes);
 router.use("/products", productRoutes);
 router.use("/categories", categoriesRoutes);
-router.use("/restaurant", restaurantRoutes);
+router.use("/restaurants", restaurantRoutes);
 
 export default router;

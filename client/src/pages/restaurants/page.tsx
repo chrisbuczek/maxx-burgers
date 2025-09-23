@@ -1,14 +1,23 @@
 import { useQuery } from "../../hooks/useQuery";
 import { getRestaurants } from "../../API";
-import type { IRestaurant } from "../../types/Restaurant";
+import type { IRestaurants } from "../../types/restaurants";
 
 const Page = () => {
-  const { data } = useQuery<IRestaurant[]>(getRestaurants);
+  const { data } = useQuery<IRestaurants>(getRestaurants);
 
   return (
     <>
-      {data && <div>{data.toString()}</div>}
       <div>Restaurants</div>
+      {data && (
+        <div>
+          {data.restaurants.map((restaurant) => (
+            <div className="p-4">
+              <div>{restaurant.name}</div>
+              <div>{restaurant.city}</div>
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 };
