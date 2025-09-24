@@ -7,3 +7,7 @@
   --color-maxbeige: #fff8f3;
   --color-white: #fff;
 }
+
+body {
+  background-color: var(--color-maxbeige);
+}
