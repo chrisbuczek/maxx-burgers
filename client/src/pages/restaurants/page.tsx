@@ -2,6 +2,7 @@ import { useQuery } from "../../hooks/useQuery";
 import { getRestaurants } from "../../API";
 import type { IRestaurants } from "../../types/Restaurants";
 import SecondNavbar from "../../components/SecondNavbar/SecondNavbar";
+import TitleBar from "../../components/TitleBar/TitleBar";
 
 const Metadata = () => (
   <>
@@ -17,7 +18,7 @@ const Page = () => {
     <>
       <Metadata />
       <SecondNavbar />
-      <div>Restaurants</div>
+      <TitleBar />
       {data && (
         <div>
           {data.restaurants.map((restaurant) => (
