@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import SecondNavbar from "../../components/SecondNavbar/SecondNavbar";
+import Button from "@mui/material/Button";
 
 const Metadata = () => (
   <>
@@ -10,7 +11,7 @@ const Metadata = () => (
   </>
 );
 
-type Inputs = {
+type FormValues = {
   email: string;
 };
 
@@ -19,8 +20,8 @@ const Page = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  } = useForm<FormValues>();
+  const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
 
   return (
     <>
@@ -63,6 +64,7 @@ const Page = () => {
               },
             }}
           />
+          <Button type="submit">submit</Button>
         </form>
       </div>
     </>

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { ThreeButtons } from "./ThreeButtons";
+import TitleBar from "./TitleBar";
 
 const meta = {
-  component: ThreeButtons,
+  component: TitleBar,
   tags: ["autodocs"],
-} satisfies Meta<typeof ThreeButtons>;
+} satisfies Meta<typeof TitleBar>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
