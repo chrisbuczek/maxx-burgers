@@ -30,8 +30,8 @@ export const LogoNavbar = () => {
         scrollDirection === "down" ? "-translate-y-[200px]" : "translate-y-0"
       }`}
     >
-      <div className="flex flex-row w-full] justify-center">
-        <div className="w-[50%]">
+      <div className="flex flex-row w-full justify-center">
+        <div className="w-[20vw]">
           <img src={"/max.svg"} className="max-h-35 ml-2 pt-4 w-full" />
         </div>
       </div>

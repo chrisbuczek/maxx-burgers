@@ -16,36 +16,19 @@ const Metadata = () => (
 );
 
 function Page() {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <>
       <Metadata />
       <LogoNavbar />
-      <div>
+      <div className="flex flex-col items-center justify-center">
         <VideoCarousel
           data={videoCarouselData}
           desktopData={videoCarouselDesktopData}
-          className="w-full h-screen object-cover"
+          className={`w-full`}
         />
-        <div className="relative w-full mx-auto">
-          {/* bottom beige */}
-          <div
-            className="bg-maxbeige absolute bottom-0  w-full h-[500px] z-2 flex flex-col items-center transition-all"
-            style={{
-              transform: `translateY(${scrollY * 0.2}px)`,
-            }}
-          >
-            <ThreeButtons className="absolute top-[-50px]" />
+        <div className=" w-full h-[1500px] bg-maxbeige z-10">
+          <div className="bg-maxbeige">
+            <ThreeButtons className=" top-[-50px]" />
             <div className="mt-20 flex flex-col gap-20">
               <ChooseCup />
               <ChooseLanguage />
