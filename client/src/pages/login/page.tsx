@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import TextField from "@mui/material/TextField";
-import SecondNavbar from "../../components/SecondNavbar/SecondNavbar";
+import SecondNavbar from "../../components/common/SecondNavbar/SecondNavbar";
 import Button from "@mui/material/Button";
 
 const Metadata = () => (
@@ -31,12 +31,18 @@ const Page = () => {
         <div className="py-6 font-bold">Please fill in</div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <TextField
-            {...register("email", { required: true })}
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^\S+@\S+$/i,
+                message: "Invalid email format",
+              },
+            })}
             id="filled-email"
             label="E-mail address"
             variant="filled"
             error={!!errors.email}
-            helperText={errors.email && "This fiels is required"}
+            helperText={errors.email && errors.email?.message}
             sx={{
               "& .MuiInputLabel-root": {
                 color: "red",

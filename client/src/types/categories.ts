@@ -1,8 +1,10 @@
 export interface ICategories {
-  categories: {
-    name: string;
-    slug: string;
-    image: string;
-    isActive: boolean;
-  }[];
+  categories: ICategory[];
+}
+
+interface ICategory {
+  name: string;
+  slug: string;
+  image: string;
+  isActive: boolean;
 }

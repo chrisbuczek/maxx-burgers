@@ -1,14 +1,14 @@
 import "./App.css";
-import { ChooseCup } from "./components/ChooseCup/ChooseCup";
-import { ThreeButtons } from "./components/ThreeButtons/ThreeButtons";
+import { ChooseCup } from "./components/common/ChooseCup/ChooseCup";
+import { ThreeButtons } from "./components/common/ThreeButtons/ThreeButtons";
 import { useEffect, useState } from "react";
-import { VideoCarousel } from "./components/VideoCarousel/VideoCarousel";
+import { VideoCarousel } from "./components/common/VideoCarousel/VideoCarousel";
 import {
   data as videoCarouselData,
   desktopData as videoCarouselDesktopData,
-} from "./components/VideoCarousel/data";
-import { LogoNavbar } from "./components/LogoNavbar/LogoNavbar";
-import { ChooseLanguage } from "./components/ChooseLanguage/ChooseLanguage";
+} from "./components/common/VideoCarousel/data";
+import { LogoNavbar } from "./components/common/LogoNavbar/LogoNavbar";
+import { ChooseLanguage } from "./components/common/ChooseLanguage/ChooseLanguage";
 
 function App() {
   const [scrollY, setScrollY] = useState(0);

@@ -1,8 +1,8 @@
 import { useQuery } from "../../hooks/useQuery";
 import { getRestaurants } from "../../API";
 import type { IRestaurants } from "../../types/Restaurants";
-import SecondNavbar from "../../components/SecondNavbar/SecondNavbar";
-import TitleBar from "../../components/TitleBar/TitleBar";
+import SecondNavbar from "../../components/common/SecondNavbar/SecondNavbar";
+import TitleBar from "../../components/common/TitleBar/TitleBar";
 
 const Metadata = () => (
   <>
