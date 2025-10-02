@@ -8,7 +8,6 @@ export interface VideoCarouselItem {
 interface VideoCarouselProps {
   data: VideoCarouselItem[];
   desktopData: VideoCarouselItem[];
-  className?: string;
   autoPlay?: boolean;
   loop?: boolean;
   muted?: boolean;
@@ -18,7 +17,6 @@ interface VideoCarouselProps {
 export const VideoCarousel: React.FC<VideoCarouselProps> = ({
   data,
   desktopData,
-  className = "",
   autoPlay = true,
   loop = true,
   muted = false,
@@ -71,7 +69,7 @@ export const VideoCarousel: React.FC<VideoCarouselProps> = ({
         className="transition-all"
       ></div>
       <div ref={videoRef} className={`absolute top-0 z-[-1]`}>
-        <div className="lg:hidden">
+        <div className="md:hidden">
           {data.map((item) => (
             <video
               key={item.id}
@@ -92,7 +90,7 @@ export const VideoCarousel: React.FC<VideoCarouselProps> = ({
             />
           ))}
         </div>
-        <div className="hidden lg:block">
+        <div className="hidden md:block">
           {desktopData.map((item) => (
             <img
               key={item.id}

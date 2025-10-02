@@ -1,6 +1,5 @@
 import { ChooseCup } from "../components/common/ChooseCup/ChooseCup";
 import { ThreeButtons } from "../components/common/ThreeButtons/ThreeButtons";
-import { useEffect, useState } from "react";
 import { VideoCarousel } from "../components/common/VideoCarousel/VideoCarousel";
 import {
   data as videoCarouselData,
@@ -24,12 +23,12 @@ function Page() {
         <VideoCarousel
           data={videoCarouselData}
           desktopData={videoCarouselDesktopData}
-          className={`w-full`}
         />
-        <div className=" w-full h-[1500px] bg-maxbeige z-10">
-          <div className="bg-maxbeige">
-            <ThreeButtons className=" top-[-50px]" />
-            <div className="mt-20 flex flex-col gap-20">
+        <div className="w-full h-[500px] bg-maxbeige z-10">
+          <div className="bg-maxbeige flex flex-col items-center">
+            <div className="md:hidden w-0 h-0 border-l-[10px] border-r-[10px] border-b-[10px] border-l-transparent border-r-transparent translate-y-[-100%] border-b-maxbeige"></div>
+            <ThreeButtons className="relative md:translate-y-[-50%]" />
+            <div className="mt-1 flex flex-col gap-20">
               <ChooseCup />
               <ChooseLanguage />
             </div>
