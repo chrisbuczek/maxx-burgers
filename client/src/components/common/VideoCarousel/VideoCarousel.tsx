@@ -24,7 +24,7 @@ export const VideoCarousel: React.FC<VideoCarouselProps> = ({
 }) => {
   const [currentSlideId, setCurrentSlideId] = useState<number>(1);
   const [scrollY, setScrollY] = useState(0);
-  const [elementHeight, setElementHeight] = useState(0);
+  const [elementHeight, setElementHeight] = useState(800);
   const videoRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
