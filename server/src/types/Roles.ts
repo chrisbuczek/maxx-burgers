@@ -3,7 +3,7 @@ export const Roles = {
   ADMIN: "admin",
 } as const;
 
-export type RolesEnum = (typeof Roles)[keyof typeof Roles];
+export type RolesEnumValues = (typeof Roles)[keyof typeof Roles];
 
 // (typeof Roles) -> { readonly USER: "user", readonly ADMIN: "admin" }
 // keyof typeof Roles -> "USER" | "ADMIN"

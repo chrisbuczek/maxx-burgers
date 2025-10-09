@@ -3,6 +3,9 @@ import type { SubmitHandler } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import SecondNavbar from "../../components/common/SecondNavbar/SecondNavbar";
 import Button from "@mui/material/Button";
+import { useQuery } from "../../hooks/useQuery";
+import { postLogin } from "../../API";
+import type { ILoginResponse } from "../../types/user/Login";
 
 const Metadata = () => (
   <>
@@ -21,7 +24,16 @@ const Page = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
-  const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
+
+  const onSubmit: SubmitHandler<FormValues> = async (formData) => {
+    console.log(formData);
+    try {
+      const response = await postLogin(formData.email, formData.email);
+      console.log("Success:", response.data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <>

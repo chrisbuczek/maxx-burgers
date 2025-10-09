@@ -121,10 +121,16 @@
     },
     "/api/v1/users/delete": {
       "get": {
+        "tags": [
+          "Authentication"
+        ],
         "description": "",
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -135,6 +141,13 @@
           "Authentication"
         ],
         "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -403,7 +416,7 @@
         }
       }
     },
-    "/api/v1/restaurant/": {
+    "/api/v1/restaurants/": {
       "get": {
         "tags": [
           "Restaurants"

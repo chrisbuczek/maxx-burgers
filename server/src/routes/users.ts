@@ -8,6 +8,7 @@ import jwt from "jsonwebtoken";
 import type { IUser } from "../types/User.js";
 import { registerSchema } from "../validators/userValidators.js";
 import { validate } from "../middleware/validate.js";
+import Order from "../models/Order.js";
 
 interface AuthRequest extends Request {
   user?: IUser;
@@ -88,12 +89,28 @@ router.post("/register", validate(registerSchema), async (req, res) => {
 });
 
 router.get("/delete", auth, async (req, res) => {
-  res.json({ message: "List of users" });
+  /*  #swagger.tags = ['Authentication'] */
+  const { email, password } = req.body;
+  const foundUser = await User.findOne({ email });
+  if (foundUser && (await foundUser.matchPassword(password))) {
+    const anonymizeOrders = await Order.updateMany({ userId: foundUser._id }, { userId: null, isAnonymized: true });
+    const isDeleted = await User.deleteOne({ email });
+    if (isDeleted.deletedCount) {
+      res.status(200).json({ message: "User deleted successfully" });
+    } else {
+      res.status(500).json({ message: "There was a problem deleting the user" });
+    }
+  } else {
+    res.status(500).json({ message: "There was a problem deleting the user" });
+  }
 });
 
 // Protected route example
 router.get("/refresh", auth, (req, res) => {
   /*  #swagger.tags = ['Authentication'] */
+  try {
+    const token = req.headers.authorization?.split(" ")[1];
+  } catch {}
   res.json({ message: "Token refreshed successfully" });
 });
 

@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
-import type { RolesEnum } from "../types/Roles.js";
+import type { RolesEnumValues } from "../types/Roles.js";
 
 export interface IUser extends mongoose.Document {
   name: string;
   email: string;
   passwordHash: string;
-  roles: RolesEnum[];
+  roles: RolesEnumValues[];
   matchPassword(enteredPassword: string): Promise<boolean>;
 }

@@ -1,8 +1,8 @@
 import { useQuery } from "../../hooks/useQuery";
 import { getRestaurants } from "../../API";
-import type { IRestaurants } from "../../types/Restaurants";
 import SecondNavbar from "../../components/common/SecondNavbar/SecondNavbar";
 import TitleBar from "../../components/common/TitleBar/TitleBar";
+import type { IRestaurants } from "../../types/Restaurants";
 
 const Metadata = () => (
   <>
@@ -12,7 +12,7 @@ const Metadata = () => (
 );
 
 const Page = () => {
-  const { data } = useQuery<IRestaurants>(getRestaurants);
+  const { data } = useQuery<IRestaurants>(() => getRestaurants());
 
   return (
     <>

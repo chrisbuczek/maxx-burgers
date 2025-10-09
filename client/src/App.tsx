@@ -29,7 +29,6 @@ function App() {
         <VideoCarousel
           data={videoCarouselData}
           desktopData={videoCarouselDesktopData}
-          className="w-full h-screen object-cover"
         />
         <div className="relative w-full mx-auto">
           {/* bottom beige */}
