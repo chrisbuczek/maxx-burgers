@@ -16,6 +16,7 @@ const Metadata = () => (
 
 type FormValues = {
   email: string;
+  password: string;
 };
 
 const Page = () => {
@@ -28,7 +29,7 @@ const Page = () => {
   const onSubmit: SubmitHandler<FormValues> = async (formData) => {
     console.log(formData);
     try {
-      const response = await postLogin(formData.email, formData.email);
+      const response = await postLogin(formData.email, formData.password);
       console.log("Success:", response.data);
     } catch (error) {
       console.error("Error:", error);
@@ -55,6 +56,42 @@ const Page = () => {
             variant="filled"
             error={!!errors.email}
             helperText={errors.email && errors.email?.message}
+            sx={{
+              "& .MuiInputLabel-root": {
+                color: "red",
+                transform: "translate(12px, 16px) scale(1)",
+                transformOrigin: "top left",
+                transition: "transform 0.3s ease, color 0.3s ease",
+                "&.Mui-focused": {
+                  color: "gray",
+                  transform: "translate(4px, -18px) scale(0.75)",
+                },
+                "&.MuiFormLabel-filled": {
+                  transform: "translate(4px, -18px) scale(0.75)",
+                },
+              },
+              "& .MuiFilledInput-root": {
+                "&:before": {
+                  borderBottom: "none",
+                },
+                "&:hover:not(.Mui-disabled):before": {
+                  borderBottom: "none",
+                },
+                "&:after": {
+                  borderBottom: "2px solid gray",
+                },
+              },
+            }}
+          />
+          <TextField
+            {...register("password", {
+              required: "Password is required",
+            })}
+            id="filled-password"
+            label="Password"
+            variant="filled"
+            error={!!errors.password}
+            helperText={errors.password && errors.password?.message}
             sx={{
               "& .MuiInputLabel-root": {
                 color: "red",

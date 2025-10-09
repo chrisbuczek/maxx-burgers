@@ -27,8 +27,7 @@ router.post("/login", async (req, res) => {
       token: generateToken(foundUser._id as string),
     });
   } else {
-    res.status(401);
-    throw new Error("Invalid Email or Password");
+    res.status(401).json({ message: "Invalid email or password" });
   }
 });
 

@@ -6,9 +6,9 @@ const API = axios.create({
   baseURL,
 });
 
-//authentication
+//users
 export const postLogin = (email: string, password: string) =>
-  API.post("/login", { email, password });
+  API.post("/users/login", { email, password });
 
 //categories
 export const getCategories = () => API.get("/categories");
