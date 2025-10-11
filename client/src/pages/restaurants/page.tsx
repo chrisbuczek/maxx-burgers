@@ -12,7 +12,8 @@ const Metadata = () => (
 );
 
 const Page = () => {
-  const { data } = useQuery<IRestaurants>(() => getRestaurants());
+  // const { data } = useQuery<IRestaurants>(() => getRestaurants()); this keeps calling to infinity
+  const { data } = useQuery<IRestaurants>(getRestaurants);
 
   return (
     <>

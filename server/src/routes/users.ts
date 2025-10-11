@@ -47,6 +47,11 @@ router.post("/logout", auth, async (req: AuthRequest, res) => {
       });
     }
 
+    //  TODO: create CRON job every 24 hours which deletes tokens older than today
+    //  await BlacklistedToken.deleteMany({
+    //  expiresAt: { $lt: new Date() } // $lt - less than
+    //  });
+
     res.status(200).json({
       message: "Logged out successfully",
       tokenBlacklisted: true,
@@ -87,30 +92,52 @@ router.post("/register", validate(registerSchema), async (req, res) => {
   }
 });
 
-router.get("/delete", auth, async (req, res) => {
+router.delete("/delete", auth, async (req: AuthRequest, res) => {
   /*  #swagger.tags = ['Authentication'] */
-  const { email, password } = req.body;
-  const foundUser = await User.findOne({ email });
-  if (foundUser && (await foundUser.matchPassword(password))) {
-    const anonymizeOrders = await Order.updateMany({ userId: foundUser._id }, { userId: null, isAnonymized: true });
-    const isDeleted = await User.deleteOne({ email });
-    if (isDeleted.deletedCount) {
-      res.status(200).json({ message: "User deleted successfully" });
-    } else {
-      res.status(500).json({ message: "There was a problem deleting the user" });
+  try {
+    const userId = req.user?._id;
+
+    if (!userId) {
+      return res.status(401).json({ message: "User not authenticated" });
     }
-  } else {
-    res.status(500).json({ message: "There was a problem deleting the user" });
+
+    // anonymize orders
+    await Order.updateMany({ userId }, { userId: null, isAnonymized: true });
+
+    const deleteResult = await User.deleteOne({ _id: userId });
+
+    if (deleteResult.deletedCount === 0) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.status(200).json({
+      message: "User account deleted successfully",
+      ordersAnonymized: true,
+    });
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 
 // Protected route example
-router.get("/refresh", auth, (req, res) => {
+router.get("/refresh", auth, async (req, res) => {
   /*  #swagger.tags = ['Authentication'] */
   try {
     const token = req.headers.authorization?.split(" ")[1];
-  } catch {}
-  res.json({ message: "Token refreshed successfully" });
+
+    if (token) {
+      const decoded = jwt.decode(token) as jwt.JwtPayload;
+      const expiresAt = new Date((decoded.exp || 0) * 1000);
+    }
+
+    res.status(200).json({
+      message: "Logged out successfully",
+      tokenBlacklisted: true,
+    });
+  } catch {
+    res.status(500).json({ message: "Error during logout" });
+  }
 });
 
 export default router;
