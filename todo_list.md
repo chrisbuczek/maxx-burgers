@@ -147,8 +147,8 @@
 
 ### 3.4 Storybook Setup (Component Library)
 
-- [ ] Install & initialize Storybook (Vite + React + TS): npx storybook@latest init
-- [ ] Configure Tailwind + globals in .storybook/preview
+- [x] Install & initialize Storybook (Vite + React + TS): npx storybook@latest init
+- [x] Configure Tailwind (tailwind config)
 - [ ] Add controls, docs, a11y, interactions, viewport addons
 - [ ] Create stories for: Button, Header, Card, Form fields, Loading, EmptyState
 - [ ] Add dark/light theme toggle in decorators

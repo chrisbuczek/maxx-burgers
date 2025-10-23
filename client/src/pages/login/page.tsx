@@ -3,9 +3,7 @@ import type { SubmitHandler } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import SecondNavbar from "../../components/common/SecondNavbar/SecondNavbar";
 import Button from "@mui/material/Button";
-import { useQuery } from "../../hooks/useQuery";
 import { postLogin } from "../../API";
-import type { ILoginResponse } from "../../types/user/Login";
 
 const Metadata = () => (
   <>
